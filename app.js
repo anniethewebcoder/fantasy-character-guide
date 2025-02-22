@@ -1,50 +1,50 @@
 require("dotenv").config();
-require("express-async-errors")
+require("express-async-errors");
 
-const helmet = require("helmet")
-const cors = require("cors")
-const xss = require('xss-clean')
-const rateLimiter = require('express-rate-limit')
+const helmet = require("helmet");
+const cors = require("cors");
+const xss = require("xss-clean");
+const rateLimiter = require("express-rate-limit");
 
 const express = require("express");
 const app = express();
 
-const connectDB = require('./db/connect')
+const connectDB = require("./db/connect");
 
-const authenticateUser = require('./middleware/authentication')
+const authenticateUser = require("./middleware/authentication");
 
-const authRouter = require('./routes/auth')
-const jobsRouter = require('./routes/jobs')
+const authRouter = require("./routes/auth");
+const characterRouter = require("./routes/character");
 
-const notFoundMiddleware = require('./middleware/not-found')
-const errorHandleMiddleware = require('./middleware/error-handler')
+const notFoundMiddleware = require("./middleware/notfound");
+const errorHandleMiddleware = require("./middleware/errorhandler");
 
 app.use(express.static("public"));
 app.use(express.json());
 
-app.set('trust proxy', 1)
+app.set("trust proxy", 1);
 app.use(
   rateLimiter({
     windowMs: 15 * 60 * 1000,
-    max: 100
+    max: 100,
   })
-)
+);
 
-app.use(helmet())
-app.use(cors())
-app.use(xss())
+app.use(helmet());
+app.use(cors());
+app.use(xss());
 
-app.use('/api/v1/auth', authRouter)
-app.use('/api/v1/character', authenticateUser, characterRouter)
+app.use("/api/v1/auth", authRouter);
+app.use("/api/v1/character", authenticateUser, characterRouter);
 
-app.use(notFoundMiddleware)
-app.use(errorHandleMiddleware)
+app.use(notFoundMiddleware);
+app.use(errorHandleMiddleware);
 
 const port = process.env.PORT || 3000;
 
 const start = async () => {
   try {
-    await connectDB(process.env.MONGO_URI)
+    await connectDB(process.env.MONGO_URI);
     app.listen(port, () => {
       console.log(`Server is listening on port ${port}.`);
     });

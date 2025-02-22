@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const { getCharacter } = require("./../controllers/characters");
+const { getCharacter } = require("./../controllers/character");
 
 router.route("/").get(getCharacter);
 
