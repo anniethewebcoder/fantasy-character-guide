@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>FCG - Register</title>
+  </head>
+  <body>
+    <div class="container" id="register-div">
+      <form action="" class="form">
+        <img
+          src="https://www.dndbeyond.com/avatars/thumbnails/43940/759/420/618/638607457242601819.png"
+          alt="avatar"
+        />
+        <h1>SIGN UP</h1>
+        <div id="message" class="messagebox" style="display: none"></div>
+        <div class="namebox">
+          <input
+            type="text"
+            name="fname"
+            id="fname"
+            class="name"
+            placeholder="First Name"
+          />
+          <input
+            type="text"
+            name="lname"
+            id="lname"
+            class="name"
+            placeholder="Last Name"
+          />
+        </div>
+        <input
+          type="text"
+          name="uname"
+          id="uname"
+          class="box"
+          placeholder="Player Name"
+        />
+        <input
+          type="email"
+          name="remail"
+          id="remail"
+          class="box"
+          placeholder="Email Address"
+        />
+        <input
+          type="password"
+          name="password"
+          id="rpass1"
+          class="box"
+          placeholder="Enter Password"
+        />
+        <input
+          type="password"
+          name="password"
+          id="rpass2"
+          class="box"
+          placeholder="Confirm Password"
+        />
+
+        <button type="button" class="submit" id="register-button">
+          Sign Up
+        </button>
+
+        <a href="login.html">Already have an account? Sign in.</a>
+      </form>
+    </div>
+
+    <script src="./register.js" type="module"></script>
+  </body>
+</html>
