@@ -30,17 +30,21 @@ export const setToken = (value) => {
 };
 
 import { showCharacter } from "./character";
-import { handleRegister, showRegister } from "./register";
+import { handleRegister } from "./register";
+import { handleLoginRegister, showLoginRegister } from "./loginRegister";
 
 document.addEventListener("DOMContentLoaded", () => {
   token = localStorage.getItem("token");
 
+  handleLoginRegister();
+  handleLogin();
   handleRegister();
 
   if (token) {
     showUser();
     showCharacter();
+    showJournal();
   } else {
-    showRegister();
+    showLoginRegister();
   }
 });

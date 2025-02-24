@@ -4,6 +4,8 @@ import { showRegister } from "./register";
 
 let loginRegisterDiv = null;
 
-export const handleLoginRegister = () => {};
+export const handleLoginRegister = () => {
+  loginRegisterDiv = document.getElementById("loginregister");
+};
 
 export const showLoginRegister = () => {};
