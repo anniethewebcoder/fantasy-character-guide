@@ -28,6 +28,11 @@ const CharacterSchema = new mongoose.Schema(
       required: [true, "Please provide character background."],
       maxlength: 50,
     },
+    createdBy: {
+      type: mongoose.Types.ObjectId,
+      ref: "User",
+      required: [true, "Please provide user."]
+    }
   },
   { timestamps: true }
 );

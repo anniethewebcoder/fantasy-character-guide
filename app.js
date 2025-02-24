@@ -36,6 +36,7 @@ app.use(xss());
 
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/character", authenticateUser, characterRouter);
+//app.use('/api/v1/character', characterRouter)
 
 app.use(notFoundMiddleware);
 app.use(errorHandleMiddleware);
