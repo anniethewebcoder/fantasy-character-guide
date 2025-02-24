@@ -1,3 +1,14 @@
+let token = null;
+
+const setToken = (value) => {
+  token = value;
+  if (value) {
+    localStorage.setItem("token", value);
+  } else {
+    localStorage.removeItem("token");
+  }
+};
+
 const email = document.getElementById("email");
 const password = document.getElementById("password");
 const message = document.getElementById("message");
@@ -21,6 +32,7 @@ loginButton.addEventListener("click", async (e) => {
     if (response.status === 200) {
       message.style = "display: block;";
       message.textContent = `Log on Succssfule. Welcome ${data.user.name}`;
+      setToken(data.token);
     } else {
       message.style = "display: block;";
       message.textContent = data.msg;

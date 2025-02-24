@@ -6,6 +6,11 @@ const getAllCharacters = async (req, res) => {
   const characters = await Character.find({
     createdBy: req.user.userId,
   }).sort("createdAt");
+
+  res.status(StatusCodes.OK).json({
+    characters,
+    count: characters.length,
+  });
 };
 
 const getCharacter = async (req, res) => {};
