@@ -4,41 +4,65 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Courier Prime";
 }
 
 .container {
   display: flex;
-  height: 500px;
-  width: 800px;
   margin: auto;
-  margin-top: 50px;
-  box-shadow: 15px 15px 20px black;
+  margin-top: 100px;
+  width: 800px;
 }
 
 .form {
   display: flex;
   flex-direction: column;
-  width: 50%;
   align-items: center;
-  background-color: whitesmoke;
+  width: 100%;
+  border-top: 2px solid orange;
 }
 
-.form h2 {
-  font-size: 3rem;
-  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+.form img {
+  width: 100px;
+  height: 100px;
+  margin-top: -50px;
+}
+.form h1 {
+  font-size: 2.2rem;
   margin: 40px;
 }
 
-.box {
-  padding: 12px;
-  width: 65%;
+.namebox {
+  display: flex;
+  flex-direction: row;
+  width: 70%;
   margin: 15px;
-  border: 1px solid black;
-  outline: none;
-  border-radius: 20px;
+  justify-content: space-between;
 }
 
-#submit {
+input[type="text"]:focus {
+  background-color: darkgray;
+}
+
+.name {
+  padding: 12px;
+  background-color: white;
+  outline: none;
+  border: 2px solid darkgray;
+  font-size: 1.2rem;
+}
+.box {
+  padding: 12px;
+  margin: 15px;
+  width: 70%;
+  background-color: white;
+  outline: none;
+  border: 2px solid darkgray;
+  font-size: 1.2rem;
+  border: 1px solid black;
+}
+
+.submit {
   padding: 12px 30px;
   width: 40%;
   margin-top: 40px;
@@ -50,7 +74,7 @@
   border-radius: 20px;
 }
 
-#submit:hover {
+.submit:hover {
   cursor: pointer;
   background-color: orange;
 }
@@ -58,13 +82,9 @@
 .form a {
   text-decoration: none;
   color: black;
-  margin-top: 20px;
+  margin-top: 30px;
 }
 
 .form a:hover {
-  color: red;
-}
-
-.side {
-  display: flex;
+  color: orange;
 }
