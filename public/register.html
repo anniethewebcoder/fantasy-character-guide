@@ -7,13 +7,14 @@
     <title>FCG - Register</title>
   </head>
   <body>
-    <div class="container">
+    <div class="container" id="register-div">
       <form action="" class="form">
         <img
           src="https://www.dndbeyond.com/avatars/thumbnails/43940/759/420/618/638607457242601819.png"
           alt="avatar"
         />
         <h1>SIGN UP</h1>
+        <div id="message" class="messagebox"></div>
         <div class="namebox">
           <input
             type="text"
@@ -39,29 +40,34 @@
         />
         <input
           type="email"
-          name="email"
-          id="email"
+          name="remail"
+          id="remail"
           class="box"
           placeholder="Email Address"
         />
         <input
           type="password"
           name="password"
-          id="pass1"
+          id="rpass1"
           class="box"
           placeholder="Enter Password"
         />
         <input
           type="password"
           name="password"
-          id="pass2"
+          id="rpass2"
           class="box"
           placeholder="Confirm Password"
         />
-        <input type="submit" value="Sign Up" class="submit" />
+
+        <button type="button" class="submit" id="register-button">
+          Sign Up
+        </button>
 
         <a href="login.html">Already have an account? Sign in.</a>
       </form>
     </div>
+
+    <script src="./register.js" type="module"></script>
   </body>
 </html>

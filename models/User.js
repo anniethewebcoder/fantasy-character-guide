@@ -46,7 +46,7 @@ UserSchema.methods.createJWT = function () {
   return jwt.sign(
     {
       userId: this._id,
-      name: this.username,
+      username: this.username,
     },
     process.env.JWT_SECRET,
     {
