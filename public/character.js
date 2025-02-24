@@ -10,9 +10,10 @@ const setToken = (value) => {
 };
 
 const charList = document.getElementById("characterList");
-
-charList.addEventListener("DOMContentLoaded", async () => {
+const charButton = document.getElementById('character-button')
+charButton.addEventListener("click", async (e) => {
   token = localStorage.getItem("token");
+  console.log(e)
   try {
     const response = await fetch("/api/v1/character", {
       method: "GET",
@@ -23,8 +24,7 @@ charList.addEventListener("DOMContentLoaded", async () => {
     });
 
     const data = await response.json();
-
-    console.log(data);
+    charList.textContent = JSON.stringify(data)
   } catch (error) {
     console.error(error);
   }
