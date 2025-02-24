@@ -12,6 +12,7 @@ registerButton.addEventListener("click", async (e) => {
   e.preventDefault();
 
   if (regpass01.value !== regpass02.value) {
+    message.style = "display: block;";
     message.textContent = "The passwords do not match.";
   } else {
     try {
@@ -45,6 +46,7 @@ registerButton.addEventListener("click", async (e) => {
       }
     } catch (error) {
       console.error(error);
+      message.style = "display: block;";
       message.textContent = "A communication error has occured.";
     }
   }
