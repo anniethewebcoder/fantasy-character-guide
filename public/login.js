@@ -31,8 +31,12 @@ loginButton.addEventListener("click", async (e) => {
     console.log(data);
     if (response.status === 200) {
       message.style = "display: block;";
-      message.textContent = `Log on Succssfule. Welcome ${data.user.name}`;
+      message.textContent = `You have signed in successfully. Welcome ${data.user.name}! Loading...`;
       setToken(data.token);
+
+      setTimeout(function () {
+        window.location.href = "character.html";
+      }, 2000);
     } else {
       message.style = "display: block;";
       message.textContent = data.msg;

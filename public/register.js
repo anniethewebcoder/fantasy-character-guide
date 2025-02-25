@@ -22,9 +22,14 @@ registerButton.addEventListener("click", async (e) => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          firstname: firstname.value,
-          lastname: lastname.value,
-          username: username.value,
+          firstname:
+            firstname.value.charAt(0).toUpperCase() + firstname.value.slice(1),
+          lastname:
+            lastname.value.charAt(0).toUpperCase() + lastname.value.slice(1),
+          username: username.value
+            .split(" ")
+            .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+            .join(" "),
           email: regemail.value,
           password: regpass01.value,
         }),
@@ -33,9 +38,8 @@ registerButton.addEventListener("click", async (e) => {
       const data = await response.json();
 
       if (response.status === 201) {
-        console.log(data);
-
-        message.textContent = `Registration successful. Welcome ${data.user.name}`;
+        message.style = "display: block;";
+        message.innerHTML = `<p>You have successfully signed up. Welcome ${data.user.name}!</p><p>Please sign in. It will load in a few seconds.</p>`;
 
         firstname.value = "";
         lastname.value = "";
@@ -43,6 +47,10 @@ registerButton.addEventListener("click", async (e) => {
         regemail.value = "";
         regpass01.value = "";
         regpass02.value = "";
+
+        setTimeout(function () {
+          window.location.href = "login.html";
+        }, 3000);
       }
     } catch (error) {
       console.error(error);
