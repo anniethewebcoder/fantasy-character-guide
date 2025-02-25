@@ -9,11 +9,12 @@ const setToken = (value) => {
   }
 };
 
-const charList = document.getElementById("characterList");
-const charButton = document.getElementById('character-button')
-charButton.addEventListener("click", async (e) => {
+const charList = document.getElementById("characters");
+const charButton = document.getElementById("character-button");
+
+document.addEventListener("DOMContentLoaded", async (e) => {
   token = localStorage.getItem("token");
-  console.log(e)
+
   try {
     const response = await fetch("/api/v1/character", {
       method: "GET",
@@ -24,12 +25,28 @@ charButton.addEventListener("click", async (e) => {
     });
 
     const data = await response.json();
-    charList.textContent = JSON.stringify(data)
+
+    const allCharacters = data.characters
+      .map((character) => {
+        const {
+          _id: charID,
+          name,
+          age,
+          species,
+          classes,
+          background,
+        } = character;
+
+        return `<div class="charbox">
+        <p>Name: ${name}</p>
+        <p>Age: ${age}</p>
+        </div>`;
+      })
+      .join("");
+
+    console.log(allCharacters);
+    charList.innerHTML = allCharacters;
   } catch (error) {
     console.error(error);
   }
 });
-
-const charSubmit = document.getElementById("character-submit");
-
-charSubmit.addEventListener("click", async (e) => {});
