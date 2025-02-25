@@ -11,6 +11,12 @@ const setToken = (value) => {
 
 const charList = document.getElementById("characters");
 const charButton = document.getElementById("character-button");
+const logoutButton = document.getElementById("logout-button");
+
+logoutButton.addEventListener("click", () => {
+  localStorage.removeItem("token");
+  window.location.href = "index.html";
+});
 
 document.addEventListener("DOMContentLoaded", async (e) => {
   token = localStorage.getItem("token");
@@ -26,26 +32,29 @@ document.addEventListener("DOMContentLoaded", async (e) => {
 
     const data = await response.json();
 
-    const allCharacters = data.characters
-      .map((character) => {
-        const {
-          _id: charID,
-          name,
-          age,
-          species,
-          classes,
-          background,
-        } = character;
+    if (data.count < 1) {
+      charList.innerHTML = "<p>No List</p>";
+    } else {
+      const allCharacters = data.characters
+        .map((character) => {
+          const {
+            _id: charID,
+            name,
+            age,
+            species,
+            classes,
+            background,
+          } = character;
 
-        return `<div class="charbox">
+          return `<div class="charbox">
         <p>Name: ${name}</p>
         <p>Age: ${age}</p>
         </div>`;
-      })
-      .join("");
+        })
+        .join("");
 
-    console.log(allCharacters);
-    charList.innerHTML = allCharacters;
+      charList.innerHTML = allCharacters;
+    }
   } catch (error) {
     console.error(error);
   }
