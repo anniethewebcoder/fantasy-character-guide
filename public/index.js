@@ -6,3 +6,9 @@ if (localStorage.getItem("token")) {
     window.location.href = "character.html";
   }, 2000);
 }
+
+const createButton = document.getElementById("create-button");
+
+createButton.addEventListener("click", () => {
+  window.location.href = "register.html";
+});
