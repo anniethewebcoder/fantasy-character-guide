@@ -35,7 +35,7 @@ loginButton.addEventListener("click", async (e) => {
       setToken(data.token);
 
       setTimeout(function () {
-        window.location.href = "character.html";
+        window.location.href = "list.html";
       }, 2000);
     } else {
       message.style = "display: block;";

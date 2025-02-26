@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>FCG - Character</title>
+  </head>
+  <body>
+    <div class="nav">
+      <ul>
+        <li>Fantasy Character Guide</li>
+      </ul>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Support</a></li>
+        <li><a href="#">Sign Out</a></li>
+      </ul>
+    </div>
+    <div class="container">
+      <form class="form">
+        <img
+          src="https://www.dndbeyond.com/avatars/thumbnails/43940/812/420/618/638607458265993956.png"
+          alt="character"
+        />
+        <h1>Create Your Character</h1>
+        <div id="message" class="messagebox" style="display: none"></div>
+        <input
+          type="text"
+          name="charname"
+          id="charname"
+          placeholder="Character's Name"
+          class="box"
+        />
+        <input
+          type="text"
+          name="charage"
+          id="charage"
+          placeholder="Character's Age"
+          class="box"
+        />
+        <a href="https://www.dndbeyond.com/classes" target="_blank"
+          >See the list of classes.</a
+        >
+        <input
+          type="text"
+          name="charclass"
+          id="charclass"
+          placeholder="Character's Class"
+          class="box"
+        />
+        <a
+          href="https://www.dndbeyond.com/backgrounds?filter-name=&filter-source-category=24&filter-partnered-content=f"
+          target="_blank"
+          >See the list of backgrounds.</a
+        >
+        <input
+          type="text"
+          name="charbackground"
+          id="charbackground"
+          placeholder="Character's Background"
+          class="box"
+        />
+        <a href="https://www.dndbeyond.com/species">See the list of species.</a>
+        <input
+          type="text"
+          name="charspecies"
+          id="charspecies"
+          placeholder="Character's Species"
+          class="box"
+        />
+
+        <button type="button" class="submit" id="create-button">Create</button>
+      </form>
+    </div>
+    <div class="footer">
+      Fantasy Character Guide &copy; Annie Kwon [Impala - Code the Dream]
+    </div>
+    <script type="module" src="./editcharacter.js"></script>
+  </body>
+</html>

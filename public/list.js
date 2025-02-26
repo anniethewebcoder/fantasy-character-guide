@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", async (e) => {
         const allCharacters = data.characters
           .map((character) => {
             const {
-              _id: charID,
+              _id: charId,
               name,
               age,
               species,
@@ -60,6 +60,8 @@ document.addEventListener("DOMContentLoaded", async (e) => {
                 <p>Class: ${classes}</p>
                 <p>Background: ${backgrounds}</p>
                 <p>Species: ${species}</p>
+                <a href="editcharacter.html?id=${charId}" class="edit-link">Edit</a>
+                <button type="button" class="delete-button" data-id"${charId}">Delete</button>
             </div>
           `;
           })
