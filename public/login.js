@@ -28,7 +28,7 @@ loginButton.addEventListener("click", async (e) => {
     });
 
     const data = await response.json();
-    console.log(data);
+
     if (response.status === 200) {
       message.style = "display: block;";
       message.textContent = `You have signed in successfully. Welcome ${data.user.name}! Loading...`;

@@ -3,8 +3,8 @@ let token = null;
 if (localStorage.getItem("token")) {
   token = localStorage.getItem("token");
   setTimeout(function () {
-    window.location.href = "character.html";
-  }, 2000);
+    window.location.href = "list.html";
+  }, 1000);
 }
 
 const createButton = document.getElementById("create-button");
