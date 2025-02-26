@@ -38,9 +38,61 @@ const getCharacter = async (req, res) => {
 
   res.status(StatusCodes.OK).json({ character });
 };
-const updateCharacter = async (req, res) => {};
+const updateCharacter = async (req, res) => {
+  const {
+    body: { name, age, classes, backgrounds, species },
+    user: { userId },
+    params: { id: characterId },
+  } = req;
 
-const deleteCharacter = async (req, res) => {};
+  if (
+    name === "" ||
+    age === "" ||
+    classes === "" ||
+    backgrounds === "" ||
+    species === ""
+  ) {
+    throw new BadRequestError(
+      "Name, age, class, background, or species cannot be empty."
+    );
+  }
+
+  const character = await Character.findByIdAndUpdate(
+    {
+      _id: characterId,
+      createdBy: userId,
+    },
+    req.body,
+    {
+      new: true,
+      runValidators: true,
+    }
+  );
+
+  if (!character) {
+    throw new NotFoundError(`No character with id: ${characterId}`);
+  }
+
+  res.status(StatusCodes.OK).json({ character });
+};
+
+const deleteCharacter = async (req, res) => {
+  const {
+    user: { userId },
+    params: { id: characterId },
+  } = req;
+
+  const job = await Character.findByIdAndDelete({
+    _id: characterId,
+    createdBy: userId,
+  });
+
+  if (!job) {
+    throw new NotFoundError(`No character with id: ${characterId}`);
+  }
+
+  res.status(StatusCodes.OK).json({ character });
+};
 
 module.exports = {
   getAllCharacters,

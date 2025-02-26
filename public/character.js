@@ -17,11 +17,23 @@ charButton.addEventListener("click", async (e) => {
         Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({
-        name: charname.value,
+        name: charname.value
+          .split(" ")
+          .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+          .join(" "),
         age: charage.value,
-        class: charclass.value,
-        background: charbackground.value,
-        species: charspecies.value,
+        class: charclass.value
+          .split(" ")
+          .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+          .join(" "),
+        background: charbackground.value
+          .split(" ")
+          .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+          .join(" "),
+        species: charspecies.value
+          .split(" ")
+          .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+          .join(" "),
       }),
     });
 
