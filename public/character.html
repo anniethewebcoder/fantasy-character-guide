@@ -8,18 +8,13 @@
   </head>
   <body>
     <div class="container">
-      <div class="nav">
-        <button type="button" id="logout-button">Sign Out</button>
-      </div>
-      <div id="message" class="messagebox"></div>
-      <div id="characters" class="list"></div>
-      <button type="button" id="character-button">Load Character</button>
-      <form class="form" style="display: none">
+      <form class="form">
         <img
           src="https://www.dndbeyond.com/avatars/thumbnails/43940/812/420/618/638607458265993956.png"
           alt="character"
         />
         <h1>Create Your Character</h1>
+        <div id="message" class="messagebox" style="display: none"></div>
         <input
           type="text"
           name="charname"
@@ -34,13 +29,9 @@
           placeholder="Character's Age"
           class="box"
         />
-        <input
-          type="text"
-          name="charspecies"
-          id="charspecies"
-          placeholder="Character's Species"
-          class="box"
-        />
+        <a href="https://www.dndbeyond.com/classes" target="_blank"
+          >See the list of classes.</a
+        >
         <input
           type="text"
           name="charclass"
@@ -48,13 +39,27 @@
           placeholder="Character's Class"
           class="box"
         />
+        <a
+          href="https://www.dndbeyond.com/backgrounds?filter-name=&filter-source-category=24&filter-partnered-content=f"
+          target="_blank"
+          >See the list of backgrounds.</a
+        >
         <input
           type="text"
           name="charbackground"
-          id="charclass"
+          id="charbackground"
           placeholder="Character's Background"
           class="box"
         />
+        <a href="https://www.dndbeyond.com/species">See the list of species.</a>
+        <input
+          type="text"
+          name="charspecies"
+          id="charspecies"
+          placeholder="Character's Species"
+          class="box"
+        />
+
         <button type="button" class="submit" id="character-button">
           Create
         </button>

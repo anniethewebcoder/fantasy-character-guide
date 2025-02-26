@@ -37,6 +37,7 @@
 .nav li {
   padding: 12px;
   margin: 15px;
+  cursor: pointer;
 }
 
 .nav a {

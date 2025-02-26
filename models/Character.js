@@ -18,12 +18,12 @@ const CharacterSchema = new mongoose.Schema(
       required: [true, "Please provide character speicies."],
       maxlength: 50,
     },
-    class: {
+    classes: {
       type: String,
       required: [true, "Please provide character class."],
       maxlength: 50,
     },
-    background: {
+    backgrounds: {
       type: String,
       required: [true, "Please provide character background."],
       maxlength: 50,
@@ -31,8 +31,8 @@ const CharacterSchema = new mongoose.Schema(
     createdBy: {
       type: mongoose.Types.ObjectId,
       ref: "User",
-      required: [true, "Please provide user."]
-    }
+      required: [true, "Please provide user."],
+    },
   },
   { timestamps: true }
 );

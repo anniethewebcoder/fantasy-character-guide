@@ -1,61 +1,43 @@
-let token = null;
-
-const setToken = (value) => {
-  token = value;
-  if (value) {
-    localStorage.setItem("token", value);
-  } else {
-    localStorage.removeItem("token");
-  }
-};
-
-const charList = document.getElementById("characters");
+const charname = document.getElementById("charname");
+const charage = document.getElementById("charage");
+const charspecies = document.getElementById("charspecies");
+const charclass = document.getElementById("charclass");
+const charbackground = document.getElementById("charbackground");
 const charButton = document.getElementById("character-button");
-const logoutButton = document.getElementById("logout-button");
 
-logoutButton.addEventListener("click", () => {
-  localStorage.removeItem("token");
-  window.location.href = "index.html";
-});
-
-document.addEventListener("DOMContentLoaded", async (e) => {
-  token = localStorage.getItem("token");
+charButton.addEventListener("click", async (e) => {
+  e.preventDefault();
+  const token = localStorage.getItem("token");
 
   try {
     const response = await fetch("/api/v1/character", {
-      method: "GET",
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
+      body: JSON.stringify({
+        name: charname.value,
+        age: charage.value,
+        class: charclass.value,
+        background: charbackground.value,
+        species: charspecies.value,
+      }),
     });
 
     const data = await response.json();
 
-    if (data.count < 1) {
-      charList.innerHTML = "<p>No List</p>";
-    } else {
-      const allCharacters = data.characters
-        .map((character) => {
-          const {
-            _id: charID,
-            name,
-            age,
-            species,
-            classes,
-            background,
-          } = character;
+    if (response.status === 201) {
+      message.style = "display: block;";
+      message.innerHTML = `<p>You have successfully created a character. Redirecting to the list...</p>`;
 
-          return `<div class="charbox">
-        <p>Name: ${name}</p>
-        <p>Age: ${age}</p>
-        </div>`;
-        })
-        .join("");
-
-      charList.innerHTML = allCharacters;
+      setTimeout(function () {
+        window.location.href = "list.html";
+      }, 3000);
     }
   } catch (error) {
     console.error(error);
+    message.style = "display: block;";
+    message.textContent = "A communication error has occured.";
   }
 });

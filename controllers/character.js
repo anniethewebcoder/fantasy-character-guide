@@ -15,7 +15,13 @@ const getAllCharacters = async (req, res) => {
 
 const getCharacter = async (req, res) => {};
 
-const createCharacter = async (req, res) => {};
+const createCharacter = async (req, res) => {
+  req.body.createdBy = req.user.userId;
+
+  const character = await Character.create(req.body);
+
+  res.status(StatusCodes.CREATED).json({ character });
+};
 
 const updateCharacter = async (req, res) => {};
 
