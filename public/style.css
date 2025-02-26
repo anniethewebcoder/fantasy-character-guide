@@ -63,6 +63,10 @@
   width: 133px;
 }
 
+h2 {
+  margin: 15px;
+  padding: 12px;
+}
 p {
   margin: 15px;
   padding: 12px;
@@ -156,11 +160,16 @@ input[type="text"]:focus {
   flex-direction: column;
   align-items: center;
   width: 100%;
-  border: 2px solid orange;
 }
 
 .charbox {
   border: 2px solid orange;
+  width: 100%;
+  padding: 12px;
+  margin: 15px;
+}
+
+.charbox p {
 }
 
 .footer {

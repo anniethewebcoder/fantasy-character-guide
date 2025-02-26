@@ -3,7 +3,7 @@ const charage = document.getElementById("charage");
 const charspecies = document.getElementById("charspecies");
 const charclass = document.getElementById("charclass");
 const charbackground = document.getElementById("charbackground");
-const charButton = document.getElementById("character-button");
+const charButton = document.getElementById("create-button");
 
 charButton.addEventListener("click", async (e) => {
   e.preventDefault();
@@ -22,11 +22,11 @@ charButton.addEventListener("click", async (e) => {
           .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
           .join(" "),
         age: charage.value,
-        class: charclass.value
+        classes: charclass.value
           .split(" ")
           .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
           .join(" "),
-        background: charbackground.value
+        backgrounds: charbackground.value
           .split(" ")
           .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
           .join(" "),
