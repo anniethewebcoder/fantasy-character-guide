@@ -25,13 +25,16 @@
   margin: 40px;
 }
 .nav {
+  display: flex;
+  flex-direction: row;
   background-color: orange;
+  justify-content: space-between;
 }
+
 .nav ul {
   list-style: none;
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
 }
 
 .nav li {
@@ -43,6 +46,10 @@
 .nav a {
   text-decoration: none;
   color: black;
+}
+
+.nav a:hover {
+  border-bottom: 2px solid black;
 }
 
 .intro {
