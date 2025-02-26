@@ -62,14 +62,6 @@ p {
   line-height: 1.5;
 }
 
-.list {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  border: 2px solid orange;
-}
-
 .messagebox {
   padding: 12px;
   margin-bottom: 15px;
@@ -150,6 +142,18 @@ input[type="text"]:focus {
 
 .form a:hover {
   color: orange;
+}
+
+.charlist {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  border: 2px solid orange;
+}
+
+.charbox {
+  border: 2px solid orange;
 }
 
 .footer {

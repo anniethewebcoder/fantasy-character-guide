@@ -53,13 +53,15 @@ document.addEventListener("DOMContentLoaded", async (e) => {
               backgrounds,
             } = character;
 
-            return `<div class="charbox">
-          <p>Name: ${name}</p>
-          <p>Age: ${age}</p>
-          <p>Class: ${classes}</p>
-          <p>Background: ${backgrounds}</p>
-          <p>Species: ${species}</p>
-          </div>`;
+            return `
+            <div class="charbox">
+                <p>Name: ${name}</p>
+                <p>Age: ${age}</p>
+                <p>Class: ${classes}</p>
+                <p>Background: ${backgrounds}</p>
+                <p>Species: ${species}</p>
+            </div>
+          `;
           })
           .join("");
 

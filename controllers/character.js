@@ -13,8 +13,6 @@ const getAllCharacters = async (req, res) => {
   });
 };
 
-const getCharacter = async (req, res) => {};
-
 const createCharacter = async (req, res) => {
   req.body.createdBy = req.user.userId;
 
@@ -23,6 +21,23 @@ const createCharacter = async (req, res) => {
   res.status(StatusCodes.CREATED).json({ character });
 };
 
+const getCharacter = async (req, res) => {
+  const {
+    user: { userId },
+    params: { id: characterId },
+  } = req;
+
+  const character = await Character.findOne({
+    _id: characterId,
+    createdBy: userId,
+  });
+
+  if (!character) {
+    throw new NotFoundError(`No character with id: ${characterId}`);
+  }
+
+  res.status(StatusCodes.OK).json({ character });
+};
 const updateCharacter = async (req, res) => {};
 
 const deleteCharacter = async (req, res) => {};
