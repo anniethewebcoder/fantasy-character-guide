@@ -1,6 +1,7 @@
 const charList = document.getElementById("characters");
 const charButton = document.getElementById("character-button");
 const logoutButton = document.getElementById("logout-button");
+const deleteButton = document.getElementsByClassName("delete-button");
 
 let token = null;
 
@@ -61,7 +62,6 @@ document.addEventListener("DOMContentLoaded", async (e) => {
                 <p>Background: ${backgrounds}</p>
                 <p>Species: ${species}</p>
                 <a href="editcharacter.html?id=${charId}" class="edit-link">Edit</a>
-                <button type="button" class="delete-button" data-id"${charId}">Delete</button>
             </div>
           `;
           })

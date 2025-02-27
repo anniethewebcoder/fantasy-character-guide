@@ -45,7 +45,7 @@ charButton.addEventListener("click", async (e) => {
 
       setTimeout(function () {
         window.location.href = "list.html";
-      }, 3000);
+      }, 1000);
     }
   } catch (error) {
     console.error(error);
