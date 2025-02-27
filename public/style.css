@@ -179,6 +179,13 @@ input[type="text"]:focus {
 .charbox p {
 }
 
+label {
+  margin-top: 15px;
+  padding: 12px;
+  width: 70%;
+}
+.question {
+}
 .footer {
   position: fixed;
   left: 0;

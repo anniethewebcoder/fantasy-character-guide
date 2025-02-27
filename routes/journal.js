@@ -1,8 +1,15 @@
 const express = require("express");
 const router = express.Router();
 
-// controllers
+const {
+  getEntry,
+  getAllEntries,
+  createEntry,
+  updateEntry,
+  deleteEntry,
+} = require("./../controllers/journal");
 
-router.post();
+router.route("/").get(getAllEntries).post(createEntry);
+router.route("/:id").get(getEntry).patch(updateEntry).delete(deleteEntry);
 
 module.exports = router;
