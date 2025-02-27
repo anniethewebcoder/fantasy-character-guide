@@ -2,12 +2,16 @@ const entryTitle = document.getElementById("entryTitle");
 const entryEntry = document.getElementById("entryEntry");
 const entryButton = document.getElementById("journal-button");
 const entries = document.getElementById("entries");
+const questChar = document.getElementById("questchar");
 
 const params = window.location.search;
 const characterId = new URLSearchParams(params).get("cid");
+const characterName = new URLSearchParams(params).get("name");
 const token = localStorage.getItem("token");
 
 document.addEventListener("DOMContentLoaded", async (e) => {
+  questChar.innerHTML += ` for ${characterName}`;
+
   try {
     const response = await fetch(`/api/v1/journal/${characterId}`, {
       method: "GET",
@@ -26,8 +30,10 @@ document.addEventListener("DOMContentLoaded", async (e) => {
         const { _id: entryId, characterBy, title, entry } = day;
 
         return `<div class="entrybox">
-        <p>${title}</p>
-        <p>${entry}</p>`;
+        <h2>${title}</h2>
+        <p>${entry}</p>
+        <a href="editjournal.html?id=${entryId}">Edit</a>
+        </div>`;
       })
       .join("");
 
@@ -63,6 +69,8 @@ entryButton.addEventListener("click", async (e) => {
       const data = await response.json();
 
       if (response.status === 201) {
+        entryTitle.value = "";
+        entryEntry.value = "";
         window.location.reload();
       }
     } catch (error) {

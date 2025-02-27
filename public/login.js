@@ -1,5 +1,12 @@
 let token = null;
 
+if (localStorage.getItem("token")) {
+  token = localStorage.getItem("token");
+  setTimeout(function () {
+    window.location.href = "list.html";
+  }, 1000);
+}
+
 const setToken = (value) => {
   token = value;
   if (value) {

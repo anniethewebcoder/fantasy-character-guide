@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", async (e) => {
                 <p>Background: ${backgrounds}</p>
                 <p>Species: ${species}</p>
                 <a href="editcharacter.html?id=${charId}" class="edit-link">Edit</a>
-                <a href="journal.html?cid=${charId}" class="journal-link">Quest Journal</a>
+                <a href="journal.html?cid=${charId}&name=${name}" class="journal-link">Quest Journal</a>
                 <a href="backstory.html?cid=${charId}" class="backstory-link">Backstory Guide</a>
                 </div>
           `;
