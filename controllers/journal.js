@@ -38,7 +38,29 @@ const getEntry = async (req, res) => {
   res.status(StatusCodes.OK).json({ entry });
 };
 
-const updateEntry = async (req, res) => {};
+const updateEntry = async (req, res) => {
+  const {
+    params: { cid: characterId, id: entryId },
+  } = req;
+
+  const entry = await Journal.findByIdAndUpdate(
+    {
+      _id: entryId,
+      characterBy: characterId,
+    },
+    req.body,
+    {
+      new: true,
+      runValidators: true,
+    }
+  );
+
+  if (!entry) {
+    throw new NotFoundError("No entry with id: ${entryId}");
+  }
+
+  res.status(StatusCodes.OK).json({ entry });
+};
 
 const deleteEntry = async (req, res) => {};
 
