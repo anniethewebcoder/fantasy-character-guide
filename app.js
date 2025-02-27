@@ -15,6 +15,7 @@ const authenticateUser = require("./middleware/authentication");
 
 const authRouter = require("./routes/auth");
 const characterRouter = require("./routes/character");
+const journalRouter = require("./routes/journal");
 
 const notFoundMiddleware = require("./middleware/notfound");
 const errorHandleMiddleware = require("./middleware/errorhandler");
@@ -36,6 +37,7 @@ app.use(xss());
 
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/character", authenticateUser, characterRouter);
+app.use("/api/v1/journal", authenticateUser, journalRouter);
 
 app.use(notFoundMiddleware);
 app.use(errorHandleMiddleware);

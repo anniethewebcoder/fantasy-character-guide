@@ -1,3 +1,21 @@
+let token = null;
+
+if (localStorage.getItem("token")) {
+  token = localStorage.getItem("token");
+  setTimeout(function () {
+    window.location.href = "list.html";
+  }, 1000);
+}
+
+const setToken = (value) => {
+  token = value;
+  if (value) {
+    localStorage.setItem("token", value);
+  } else {
+    localStorage.removeItem("token");
+  }
+};
+
 const email = document.getElementById("email");
 const password = document.getElementById("password");
 const message = document.getElementById("message");
@@ -17,10 +35,15 @@ loginButton.addEventListener("click", async (e) => {
     });
 
     const data = await response.json();
-    console.log(data);
+
     if (response.status === 200) {
       message.style = "display: block;";
-      message.textContent = `Log on Succssfule. Welcome ${data.user.name}`;
+      message.textContent = `You have signed in successfully. Welcome ${data.user.name}! Loading...`;
+      setToken(data.token);
+
+      setTimeout(function () {
+        window.location.href = "list.html";
+      }, 2000);
     } else {
       message.style = "display: block;";
       message.textContent = data.msg;

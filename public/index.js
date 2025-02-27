@@ -1,49 +1,14 @@
-let activeDiv = null;
+let token = null;
 
-export const setDiv = (newDiv) => {
-  if (newDiv != activeDiv) {
-    if (activeDiv) {
-      activeDiv.style.display = "none";
-    }
-
-    newDiv.style.display = "block";
-    activeDiv = newDiv;
-  }
-};
-
-export let inputEnabled = true;
-
-export const enableInput = (state) => {
-  inputEnabled = state;
-};
-
-export let token = null;
-
-export const setToken = (value) => {
-  token = value;
-
-  if (value) {
-    localStorage.setItem("token", value);
-  } else {
-    localStorage.removeItem("token");
-  }
-};
-
-import { showUser } from "./user";
-import { showCharacter } from "./character";
-import { handleRegister } from "./register";
-
-document.addEventListener("DOMContentLoaded", () => {
+if (localStorage.getItem("token")) {
   token = localStorage.getItem("token");
+  setTimeout(function () {
+    window.location.href = "list.html";
+  }, 1000);
+}
 
-  handleLogin();
-  handleRegister();
+const createButton = document.getElementById("create-button");
 
-  if (token) {
-    showUser();
-    showCharacter();
-    showJournal();
-  } else {
-    showLoginRegister();
-  }
+createButton.addEventListener("click", () => {
+  window.location.href = "register.html";
 });

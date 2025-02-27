@@ -8,17 +8,71 @@
 }
 
 .container {
-  display: flex;
   margin: auto;
-  margin-top: 100px;
+
+  margin-bottom: 100px;
   width: 800px;
 }
 
-.intro {
+.home {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
+.home h1 {
+  font-size: 2.2rem;
+  margin: 40px;
+}
+.nav {
+  display: flex;
+  flex-direction: row;
+  background-color: orange;
+  justify-content: space-between;
+}
+
+.nav ul {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+}
+
+.nav li {
+  padding: 12px;
+  margin: 15px;
+  cursor: pointer;
+}
+
+.nav a {
+  text-decoration: none;
+  color: black;
+}
+
+.nav a:hover {
+  border-bottom: 2px solid black;
+}
+
+.intro {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-top: 50px;
+}
+
+.intro img {
+  width: 133px;
+}
+
+h2 {
+  margin: 15px;
+  padding: 12px;
+}
+p {
+  margin: 15px;
+  padding: 12px;
+  line-height: 1.5;
+}
+
 .messagebox {
   padding: 12px;
   margin-bottom: 15px;
@@ -28,6 +82,7 @@
 .form {
   display: flex;
   flex-direction: column;
+  margin-top: 100px;
   align-items: center;
   width: 100%;
   border-top: 2px solid orange;
@@ -35,8 +90,7 @@
 
 .form img {
   width: 100px;
-  height: 100px;
-  margin-top: -50px;
+  margin-top: -75px;
 }
 .form h1 {
   font-size: 2.2rem;
@@ -73,6 +127,13 @@ input[type="text"]:focus {
   border: 1px solid black;
 }
 
+.buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 80%;
+}
+
 .submit {
   padding: 12px 30px;
   width: 40%;
@@ -98,4 +159,50 @@ input[type="text"]:focus {
 
 .form a:hover {
   color: orange;
+}
+
+.charlist {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.charbox {
+  border: 2px solid orange;
+  width: 100%;
+  padding: 12px;
+  margin: 15px;
+}
+
+.charbox p {
+}
+
+label {
+  margin-top: 15px;
+  padding: 12px;
+  width: 70%;
+}
+.question {
+}
+
+#entries {
+  margin-top: 30px;
+  border-top: 2px solid orange;
+}
+.entrybox {
+  margin: 15px;
+  padding: 12px;
+  border-bottom: 2px solid darkgray;
+}
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: black;
+  color: white;
+  text-align: center;
+  margin: 0;
+  padding: 15px;
 }

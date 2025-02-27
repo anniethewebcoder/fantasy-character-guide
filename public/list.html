@@ -3,7 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>FCG - Profile</title>
+    <link rel="stylesheet" href="style.css" />
+    <title>FCG - Character List</title>
   </head>
   <body>
     <div class="nav">
@@ -14,11 +15,19 @@
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Support</a></li>
-        <li><a href="login.html">Sign In</a></li>
+        <li><a href="#" id="logout-button">Sign Out</a></li>
       </ul>
+    </div>
+    <div class="container">
+      <div id="message" class="messagebox"></div>
+      <div id="characters" class="charlist"></div>
+      <button type="button" id="character-button" class="submit">
+        Create a new character.
+      </button>
     </div>
     <div class="footer">
       Fantasy Character Guide &copy; Annie Kwon [Impala - Code the Dream]
     </div>
+    <script type="module" src="./list.js"></script>
   </body>
 </html>
