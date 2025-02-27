@@ -19,8 +19,6 @@ document.addEventListener("DOMContentLoaded", async (e) => {
 
     const data = await response.json();
 
-    console.log(data.entries);
-
     const { title, entry } = data.entries;
 
     const allEntries = data.entries
@@ -46,7 +44,29 @@ entryButton.addEventListener("click", async (e) => {
     window.location.href = "login.html";
   } else {
     try {
-      const response = await fetch(`/api/v1/journal/${characterId}`);
-    } catch (error) {}
+      const response = await fetch(`/api/v1/journal/${characterId}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          title: entryTitle.value
+            .split(" ")
+            .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+            .join(" "),
+          entry: entryEntry.value,
+          characterBy: characterId,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.status === 201) {
+        window.location.reload();
+      }
+    } catch (error) {
+      console.error(error);
+    }
   }
 });
