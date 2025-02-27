@@ -9,7 +9,7 @@ const {
   deleteEntry,
 } = require("./../controllers/journal");
 
-router.route("/").get(getAllEntries).post(createEntry);
-router.route("/:id").get(getEntry).patch(updateEntry).delete(deleteEntry);
+router.route("/:cid").get(getAllEntries).post(createEntry);
+router.route("/:cid/:id").get(getEntry).patch(updateEntry).delete(deleteEntry);
 
 module.exports = router;
