@@ -17,6 +17,7 @@ const authRouter = require("./routes/auth");
 const characterRouter = require("./routes/character");
 const journalRouter = require("./routes/journal");
 
+
 const notFoundMiddleware = require("./middleware/notfound");
 const errorHandleMiddleware = require("./middleware/errorhandler");
 
@@ -39,14 +40,42 @@ app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/character", authenticateUser, characterRouter);
 app.use("/api/v1/journal", authenticateUser, journalRouter);
 
+
+
+app.get("/multiply", (req, res) => {
+  const result = req.query.first * req.query.second
+
+  if(result.isNaN) {
+    result = "NaN"
+  } else if (result == null) {
+    result = "null"
+  }
+
+  res.json({ result: result })
+})
+
 app.use(notFoundMiddleware);
 app.use(errorHandleMiddleware);
 
+let mongoURL = process.env.MONGO_URI
+
+if(process.env.NODE_ENV == "test") {
+  mongoURL = process.env.MONGO_URI_TEST 
+}
+
 const port = process.env.PORT || 3000;
 
+app.use((req, res, next) => {
+  if (req.path == "/multiply") {
+    res.set("Content-Type", "application/json");
+  } else {
+    res.set("Content-Type", "text/html");
+  }
+  next();
+});
 const start = async () => {
   try {
-    await connectDB(process.env.MONGO_URI);
+    await connectDB(mongoURL);
     app.listen(port, () => {
       console.log(`Server is listening on port ${port}.`);
     });
@@ -56,3 +85,5 @@ const start = async () => {
 };
 
 start();
+
+module.exports = { app }
